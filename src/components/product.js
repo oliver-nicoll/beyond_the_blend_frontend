@@ -6,8 +6,9 @@
 //         this.name = name
 //         this.description = description
 //         this.price = price
-//         this.store_id = store_id
 //         this.stock = stock
+//         this.image = image
+//         this.category = category
 
 //         Product.all.push(this)
 //     }

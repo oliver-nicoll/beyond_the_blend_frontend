@@ -6,13 +6,14 @@ class MarketAdapter {
 
     getMarkets(){
         fetch(this.baseMarketURL)
-        .then(r => r.json())
-        .then(market => {
-            market.forEach(market => {
-                const m = new Market(market)
-                m.addToDom()
-            })
-        })
+        .then(resp => resp.json())
+        .then(markets => console.log(markets))
+        // .then(markets => {
+        //     markets.forEach(market => {
+        //         const m = new Market(market)
+        //         m.addToDom()
+        //     })
+        // })
         .catch(error => console.error(error))
 
     }
