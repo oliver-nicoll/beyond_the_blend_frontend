@@ -1,16 +1,16 @@
 let editMode = false
-const marketAdapter = new MarketAdapter("http://127.0.0.1:3000")
+const productAdapter = new productAdapter("http://127.0.0.1:3000")
 
 document.addEventListener("DOMContentLoaded", () => {
     addCreateForm();
-    marketAdapter.getMarkets();
+    productAdapter.getproducts();
     listenEditDelete();
 })
 
 function addCreateForm(){
     const formContainer = document.getElementById("form-container");
     const form = document.createElement('form');
-    form.innerHTML = `<input id="name-input" placeholder='name' type='text'/><br><input id="market-submit" value='Create Market' type='submit'/>`
+    form.innerHTML = `<input id="name-input" placeholder='name' type='text'/><br><input id="product-submit" value='Create product' type='submit'/>`
 
     formContainer.append(form)
 
@@ -21,26 +21,26 @@ function handleSubmit(event){
     event.preventDefault()
     const nameInput = event.target[0]
     if (editMode){
-        marketAdapter.editmarket(editMode, nameInput)
+        productAdapter.editproduct(editMode, nameInput)
     } else {
-        marketAdapter.createMarket(nameInput)
+        productAdapter.createproduct(nameInput)
     }    
 }
 
 function listenEditDelete(){
-    const marketContainer = document.getElementById("market-container");
-    marketContainer.addEventListener("click", handleEditDelete)
+    const productContainer = document.getElementById("product-container");
+    productContainer.addEventListener("click", handleEditDelete)
 }
 
 function handleEditDelete(e){
     const li = e.target.parentElement
     if (e.target.dataset.action === "delete"){
-        marketAdapter.deletemarket(li)
+        productAdapter.deleteproduct(li)
     } else if (e.target.dataset.action === "edit") {
         
         editMode = li
         
-        document.getElementById('market-submit').value = "Update"
+        document.getElementById('product-submit').value = "Update"
         
         document.getElementById('name-input').value = li.children[0].innerText
         

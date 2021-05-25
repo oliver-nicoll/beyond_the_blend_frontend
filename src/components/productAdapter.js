@@ -1,25 +1,26 @@
-class MarketAdapter {
+class ProductAdapter {
 
     constructor(baseURL){
-        this.baseMarketURL = `${baseURL}/api/v1/markets`
+        this.baseProductURL = `${baseURL}/api/v1/products`
     }
 
-    getMarkets(){
-        fetch(this.baseMarketURL)
+    getProducts(){
+        fetch(this.baseProductURL)
         .then(resp => resp.json())
-        .then(markets => console.log(markets))
-        // .then(markets => {
-        //     markets.forEach(market => {
-        //         const m = new Market(market)
-        //         m.addToDom()
+        .then(Products => console.log(Products))
+        // .then(products => {
+        //     products.forEach(product => {
+        //         let p = new Product(product)
+        //         p.addToDom()
         //     })
+            // debugger
         // })
         .catch(error => console.error(error))
 
     }
 
-    editMarket(editMode, nameInput){
-        fetch(`http://127.0.0.1:3000/api/v1/markets/${editMode.dataset.id}`, {
+    editProduct(editMode, nameInput){
+        fetch(`http://127.0.0.1:3000/api/v1/products/${editMode.dataset.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -32,9 +33,9 @@ class MarketAdapter {
         .then(resp => resp.json())
         .then(data => {
             if (data.status === 204) {
-                // editMode.children[0].innerText = data.market.name
+                // editMode.children[0].innerText = data.Product.name
                 // editMode = false
-                // document.getElementById('market-submit').value = "Create market"
+                // document.getElementById('Product-submit').value = "Create Product"
                 // nameInput.value = ""  
             } else {
                 alert(data.errors)
@@ -43,8 +44,8 @@ class MarketAdapter {
         .catch(err => console.error(err))
     }
 
-    createMarket(nameInput){
-        fetch("http://127.0.0.1:3000/api/v1/markets", {
+    createProduct(nameInput){
+        fetch("http://127.0.0.1:3000/api/v1/Products", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -58,8 +59,8 @@ class MarketAdapter {
         .then(data => {
             console.log("I'm in the second then!", data)
             if (data.status === 201){
-                const s = new market(data.market)
-                s.addToDom()
+                const p = new Product(data.product)
+                p.addToDom()
             } else {
                 alert(data.errors)
             }
@@ -68,8 +69,8 @@ class MarketAdapter {
         .catch(err => console.error("I'm in the catch!", err))
     }
 
-    deleteMarket(li){
-        fetch(`http://127.0.0.1:3000/api/v1/markets/${li.dataset.id}`, {
+    deleteProduct(li){
+        fetch(`http://127.0.0.1:3000/api/v1/products/${li.dataset.id}`, {
             method: "DELETE"
         })
         .then(resp => {
