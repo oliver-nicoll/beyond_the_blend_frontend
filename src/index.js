@@ -1,20 +1,48 @@
-/*
-send fetch request to backend
-*/
+let editMode = false
+const Adapter = new Adapter("http://127.0.0.1:3000")
+
 document.addEventListener("DOMContentLoaded", () => {
-    fetchMarket();
+    addCreateForm();
+    Adapter.getMarket();
+    listenEditDelete();
 })
-function fetchMarket () {
-    const marketContainer = document.getElementById("market-container")
-    
-    fetch("http://127.0.0.1:3000/api/v1/markets")
-    .then(resp => resp.json())
-    .then(info => {
-        info.forEach((market) => {
-            marketContainer.innerHTML += `<li>${market.name}</li>`
-        })
-    })
-    .catch(err => console.warn(err))
+
+function addCreateForm(){
+    const formContainer = document.getElementById("form-container");
+    const form = document.createElement('form');
+    form.innerHTML = `<input id="name-input" placeholder='name' type='text'/><br><input id="market-submit" value='Create Market' type='submit'/>`
+
+    formContainer.append(form)
+
+    form.addEventListener("submit", handleSubmit)
 }
 
+function handleSubmit(event){
+    event.preventDefault()
+    const nameInput = event.target[0]
+    if (editMode){
+        Adapter.editmarket(editMode, nameInput)
+    } else {
+        Adapter.createmarket(nameInput)
+    }    
+}
 
+function listenEditDelete(){
+    const marketContainer = document.getElementById("market-container");
+    marketContainer.addEventListener("click", handleEditDelete)
+}
+
+function handleEditDelete(e){
+    const li = e.target.parentElement
+    if (e.target.dataset.action === "delete"){
+        Adapter.deletemarket(li)
+    } else if (e.target.dataset.action === "edit") {
+        
+        editMode = li
+        
+        document.getElementById('market-submit').value = "Update"
+        
+        document.getElementById('name-input').value = li.children[0].innerText
+        
+    }
+}
