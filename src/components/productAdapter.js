@@ -13,10 +13,8 @@ class ProductAdapter {
                 let p = new Product(product)
                 p.addToDom()
             })
-            // debugger
         })
         .catch(error => console.error(error))
-
     }
 
 //     editProduct(editMode, nameInput){
