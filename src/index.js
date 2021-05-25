@@ -1,9 +1,9 @@
 let editMode = false
-const Adapter = new Adapter("http://127.0.0.1:3000")
+const marketAdapter = new marketAdapter("http://127.0.0.1:3000")
 
 document.addEventListener("DOMContentLoaded", () => {
     addCreateForm();
-    Adapter.getMarket();
+    marketAdapter.getMarket();
     listenEditDelete();
 })
 
@@ -21,9 +21,9 @@ function handleSubmit(event){
     event.preventDefault()
     const nameInput = event.target[0]
     if (editMode){
-        Adapter.editmarket(editMode, nameInput)
+        marketAdapter.editmarket(editMode, nameInput)
     } else {
-        Adapter.createmarket(nameInput)
+        marketAdapter.createmarket(nameInput)
     }    
 }
 
@@ -35,7 +35,7 @@ function listenEditDelete(){
 function handleEditDelete(e){
     const li = e.target.parentElement
     if (e.target.dataset.action === "delete"){
-        Adapter.deletemarket(li)
+        marketAdapter.deletemarket(li)
     } else if (e.target.dataset.action === "edit") {
         
         editMode = li
