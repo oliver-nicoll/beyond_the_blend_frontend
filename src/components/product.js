@@ -1,7 +1,7 @@
 class Product {
     static all = []
 
-    constructor({id, name, description, price, stock}){
+    constructor({id, name, description, price, image, category, stock}){
         this.id = id
         this.name = name
         this.description = description
@@ -17,5 +17,10 @@ class Product {
         return(
             `<li data-id=${this.id}><span>${this.name}</span> - <span>${this.price}</span> <button data-action="cart">Add to Cart</button></li>`
         )
+    }
+
+    addToDom(){
+        const productContainer = document.getElementById("product-container");
+        productContainer.innerHTML += this.render()
     }
 }
