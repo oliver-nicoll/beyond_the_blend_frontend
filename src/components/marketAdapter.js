@@ -1,11 +1,11 @@
-class ShoppeAdapter {
+class MarketAdapter {
 
     constructor(baseURL){
-        this.basemarketURL = `${baseURL}/api/v1/markets`
+        this.baseMarketURL = `${baseURL}/api/v1/markets`
     }
 
-    getmarkets(){
-        fetch(this.basemarketURL)
+    getMarkets(){
+        fetch(this.baseMarketURL)
         .then(r => r.json())
         .then(market => {
             market.forEach(market => {
@@ -15,17 +15,6 @@ class ShoppeAdapter {
         })
         .catch(error => console.error(error))
 
-
-        // function fetchmarkets(){
-        //     // const marketsContainer = document.getElementById("markets-container")
-        
-        //     // fetch("http://localhost:3000/api/v1/markets")
-        //     // .then(r => r.json())
-        //     // .then(data => {
-        //     //     data.forEach(addmarket)
-        //     // })
-        //     // .catch(err => console.warn(err))
-        // }
     }
 
     editMarket(editMode, nameInput){

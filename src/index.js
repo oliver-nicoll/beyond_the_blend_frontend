@@ -1,5 +1,6 @@
 let editMode = false
-const marketAdapter = new marketAdapter("http://127.0.0.1:3000")
+const marketAdapter = new MarketAdapter("http://127.0.0.1:3000")
+debugger
 
 document.addEventListener("DOMContentLoaded", () => {
     addCreateForm();
