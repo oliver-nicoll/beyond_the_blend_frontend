@@ -9,9 +9,11 @@ class ProductAdapter {
         .then(resp => resp.json())
         .then(products => {
             products.forEach(product => {
+                // debugger
                 let p = new Product(product)
                 p.addToDom()
             })
+            addCart()
         })
         .catch(error => console.error(error))
     }

@@ -6,9 +6,9 @@ let cartPage = "cart"
 document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
     form.listenOrder();
+    
     shoppingCart();
-    addCart();
-    checkout()
+    checkout();
 })
 
 function shoppingCart(){
@@ -36,13 +36,17 @@ function shoppingCart(){
 function addCart(){
     const cartContainer = document.getElementById("cart-container")
     cart.forEach(id => {
-        cartContainer.innerHTML += `<p> ${id} </p>`
+        let product = Product.all.find((element) => element.id == id)
+        cartContainer.innerHTML += `<p> ${product.name} - $ ${product.price}0 </p>`
     })
 }
 
 function checkout(){
+   
+    // const checkout = document.getElementById("checkout")
     document.getElementById("checkout").addEventListener("click", () => {
-        localStorage.removeItem("cart")
+        console.log("Checkout")
+        localStorage.setItem("cart", JSON.stringify([]))
         cart = []
         document.getElementById("cart-container").innerHTML = ""
     })

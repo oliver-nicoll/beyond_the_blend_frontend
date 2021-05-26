@@ -16,6 +16,7 @@ class Form {
         const action = e.target.dataset.action
         const productId = parseInt(e.target.parentElement.dataset.id)
         let productName = e.target.parentElement.children[0].innerText
+        const cartContainer = document.getElementById("cart-container")
         
         switch (action) {
 
@@ -25,6 +26,7 @@ class Form {
                 cart.push(productId)
                 localStorage.setItem("cart", JSON.stringify(cart))
                 alert(`Yay! Added ${productName} to cart.`)
+                cartContainer.innerHTML += `<p> ${productId} </p>`
                 break;
 
             case "delete-item-cart":
