@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
     form.listenOrder();
     shoppingCart();
-  
+    addCart();
+    checkout()
 })
 
 function shoppingCart(){
@@ -29,5 +30,20 @@ function shoppingCart(){
             default:
                 break;
         }
+    })
+}
+
+function addCart(){
+    const cartContainer = document.getElementById("cart-container")
+    cart.forEach(id => {
+        cartContainer.innerHTML += `<p> ${id} </p>`
+    })
+}
+
+function checkout(){
+    document.getElementById("checkout").addEventListener("click", () => {
+        localStorage.removeItem("cart")
+        cart = []
+        document.getElementById("cart-container").innerHTML = ""
     })
 }

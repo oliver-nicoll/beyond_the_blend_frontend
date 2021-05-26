@@ -37,3 +37,7 @@ span {
     margin-right: 30%;
     margin-bottom: 5%;
 }
+
+#cart-side-page {
+    align-content: right;
+}
