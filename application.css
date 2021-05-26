@@ -9,6 +9,21 @@ body {
     color: black;
 }
 
+ul {
+    list-style-type: none;
+    padding: 10;
+    margin: 25;
+    position: relative;
+    align-items: center;
+  }
+
 li {
     list-style-type: none;
+    position: relative;
+    align-content: space-around;
+    
+}
+
+span {
+    align-content: center;
 }

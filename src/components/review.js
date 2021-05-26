@@ -1,23 +1,22 @@
-class ProductAdapter {
-
+class Review {
     constructor(baseURL){
-        this.baseProductURL = `${baseURL}/api/v1/products`
+        this.baseReviewURL = `${baseURL}/api/v1/reviews`
     }
 
-    getProducts(){
-        fetch(this.baseProductURL)
+    getReviews(){
+        fetch(this.baseReviewURL)
         .then(resp => resp.json())
-        .then(products => {
-            products.forEach(product => {
-                let p = new Product(product)
-                p.addToDom()
+        .then(reviews => {
+            reviews.forEach(review => {
+                let r = new Review(review)
+                r.addToDom()
             })
         })
         .catch(error => console.error(error))
     }
 
-    editProduct(editMode, nameInput){
-        fetch(`${this.baseProductURL}/${editMode.dataset.id}`, {
+    editReview(editMode, nameInput){
+        fetch(`${this.baseReviewURL}/${editMode.dataset.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +31,7 @@ class ProductAdapter {
             if (data.status === 204) {
                 editMode.children[0].innerText = data.product.name
                 editMode = false
-                document.getElementById('product-submit').value = "Create product"
+                document.getElementById('review-submit').value = "Create Review"
                 nameInput.value = ""  
             } else {
                 alert(data.errors)
@@ -41,8 +40,8 @@ class ProductAdapter {
         .catch(err => console.error(err))
     }
 
-    createProduct(nameInput){
-        fetch(this.baseProductURL, {
+    createReview(nameInput){
+        fetch(this.baseReviewURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -56,32 +55,13 @@ class ProductAdapter {
         .then(data => {
             console.log("I'm in the second then!", data)
             if (data.status === 201){
-                const p = new product(data.product)
-                p.addToDom()
+                const r = new review(data.review)
+                r.addToDom()
             } else {
                 alert(data.errors)
             }
             nameInput.value = ""
         })
         .catch(err => console.error("I'm in the catch!", err))
-    }
-
-    deleteProduct(li){
-        fetch(`${this.baseProductURL}/${li.dataset.id}`, {
-            method: "DELETE"
-        })
-        .then(resp => {
-            console.log(resp)
-            return resp.json()
-        })
-        .then(data => {
-            if (data.message === "Successfully deleted"){
-                
-                li.remove()
-            } else {
-                alert(data.message)
-            }
-        })
-        .catch(err => console.error(err))
     }
 }

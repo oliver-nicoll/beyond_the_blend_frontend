@@ -1,7 +1,7 @@
 class Product {
     static all = []
 
-    constructor({id, name, description, price, image, category, stock}){
+    constructor({id, name, description, price, image, category, stock, reviews}){
         this.id = id
         this.name = name
         this.description = description
@@ -9,6 +9,7 @@ class Product {
         this.stock = stock
         this.image = image
         this.category = category
+        this.reviews = reviews.map(r => new reviews(r))
 
         Product.all.push(this)
     }
@@ -36,6 +37,17 @@ class Product {
     addToDom(){
         const productContainer = document.getElementById("product-container");
         productContainer.innerHTML += this.render()
+    }
+
+    renderReviews(){
+        const reviewContainer = document.getElementById(`review-${this.id}`)
+        const span = document.createElement('span')
+
+        this.reviews.forEach(r => span.innerHTML)
+
+        reviewContainer.append(span)
+
+        reviews = span
     }
 
     currency(){
