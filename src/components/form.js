@@ -1,4 +1,4 @@
-class form {
+class Form {
 
     constructor(){
         
@@ -7,18 +7,24 @@ class form {
 
 
     listenOrder(){
-        const cardBody = document.getElementById("card-body");
-        cardBody.addEventListener("click", this.handleOrder)
+        const productContainer = document.getElementById("product-container");
+        productContainer.addEventListener("click", this.handleOrder)
     }
     
     handleOrder(e){
         const li = e.target.parentElement
-        debugger
         const action = e.target.dataset.action
+        const productId = parseInt(e.target.parentElement.dataset.id)
+        
         switch (action) {
 
-            case "cart":
-                console.log("Adding Item to Cart", e.target.parentElement.dataset.id)
+            case "add-cart":
+                console.log("Adding Item to Cart", productId)
+                
+                break;
+
+            case "delete-item-cart":
+                console.log("Delete Item to Cart", productId)
                 
                 break;
 

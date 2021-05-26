@@ -1,8 +1,8 @@
 const productAdapter = new ProductAdapter("http://127.0.0.1:3000")
-const newForm = new Form
+const form = new Form
 
 document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
-    listenOrder();
+    form.listenOrder();
   
 })

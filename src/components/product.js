@@ -15,17 +15,17 @@ class Product {
 
     render(){
         return(
-            `<li class="product-card", data-id=${this.id}>
+            `<li class="product-card">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-100">
                             <img src="${this.image}" class="card-img-top" >
-                        <div class="card-body">
+                        <div data-id=${this.id} class="card-body">
                             <h5 class="card-title">${this.name}</h5>
                             <p class="card-text">${this.description}</p>
                             <span>$ ${this.price}</span>
-                            <button class="btn btn-secondary", data-action="cart">Add to Cart</button>
-                            <button class="btn btn-danger", data-action="cart">Remove from Cart</button>
+                            <button class="btn btn-secondary" data-action="add-cart">Add to Cart</button>
+                            <button class="btn btn-danger" data-action="delete-item-cart">Remove from Cart</button>
                         </div>
                     </div>
                 </div>   
