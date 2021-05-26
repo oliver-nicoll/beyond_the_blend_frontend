@@ -16,7 +16,6 @@ class Form {
         const action = e.target.dataset.action
         const productId = parseInt(e.target.parentElement.dataset.id)
         let productName = e.target.parentElement.children[0].innerText
-        let cart = JSON.parse(localStorage.getItem("cart")) || []
         
         switch (action) {
 
