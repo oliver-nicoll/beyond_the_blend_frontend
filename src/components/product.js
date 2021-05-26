@@ -9,7 +9,6 @@ class Product {
         this.stock = stock
         this.image = image
         this.category = category
-        this.reviews = reviews.map(r => new reviews(r))
 
         Product.all.push(this)
     }
@@ -39,16 +38,16 @@ class Product {
         productContainer.innerHTML += this.render()
     }
 
-    renderReviews(){
-        const reviewContainer = document.getElementById(`review-${this.id}`)
-        const span = document.createElement('span')
+    // renderReviews(){
+    //     const reviewContainer = document.getElementById(`review-${this.id}`)
+    //     const span = document.createElement('span')
 
-        this.reviews.forEach(r => span.innerHTML)
+    //     this.reviews.forEach(r => span.innerHTML)
 
-        reviewContainer.append(span)
+    //     reviewContainer.append(span)
 
-        reviews = span
-    }
+    //     reviews = span
+    // }
 
     currency(){
         let amount = this.price
