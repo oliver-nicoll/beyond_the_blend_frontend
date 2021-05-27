@@ -6,7 +6,7 @@ let cartPage = "cart"
 document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
     form.listenOrder();
-    
+    form.listenCartItem();
     shoppingCart();
     checkout();
 })
@@ -37,17 +37,18 @@ function addCart(){
     const cartContainer = document.getElementById("cart-container")
     cart.forEach(id => {
         let product = Product.all.find((element) => element.id == id)
-        cartContainer.innerHTML += `<p> ${product.name} - $ ${product.price}0 </p>`
+        cartContainer.innerHTML += `<p> ${product.name} - $ ${product.price}0 <button class="btn btn-danger" data-action="delete-item-cart">Remove from Cart</button> </p>`
     })
 }
 
 function checkout(){
-   
-    // const checkout = document.getElementById("checkout")
-    document.getElementById("checkout").addEventListener("click", () => {
+    const checkout = document.getElementById("checkout")
+    
+    checkout.addEventListener("click", () => {
         console.log("Checkout")
         localStorage.setItem("cart", JSON.stringify([]))
         cart = []
         document.getElementById("cart-container").innerHTML = ""
     })
 }
+

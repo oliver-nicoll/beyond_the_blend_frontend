@@ -1,14 +1,38 @@
 class Form {
 
     constructor(){
-        
+        this.handleCartItem = this.handleCartItem.bind(this)
         this.handleOrder = this.handleOrder.bind(this)
     }
 
+    listenCartItem(){
+        const cartContainer = document.getElementById("cart-container")
+        cartContainer.addEventListener("click", this.handleCartItem)
+    }
 
     listenOrder(){
         const productContainer = document.getElementById("product-container");
         productContainer.addEventListener("click", this.handleOrder)
+    }
+
+    handleCartItem(e){
+        
+        const divCartSidePg = e.target.parentElement
+        const action = e.target.dataset.action
+        const productId = parseInt(e.target.parentElement.dataset.id)
+
+        switch (action) {
+
+            case "delete-item-cart":
+                console.log("Delete Item to Cart", productId)
+                cart.splice(cart.indexOf(productId), 1)
+                localStorage.setItem("cart", JSON.stringify(cart))
+
+                break;
+
+            default:
+                break;
+        }
     }
     
     handleOrder(e){
@@ -40,4 +64,6 @@ class Form {
                 break;
         }
     }
+
+
 }

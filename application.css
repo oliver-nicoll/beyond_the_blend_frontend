@@ -22,11 +22,9 @@ body {
 }
 
 #cart-side-page {
-    margin: 20px 0;
-    float: right;
-    width: 350px;
+    margin-left: 65%;
+    margin-right: 30%;
+    margin-bottom: 5%;
     position: relative;
-    border-radius: 3px;
-    padding: 20px;
+    width: 30%;
 }
-
