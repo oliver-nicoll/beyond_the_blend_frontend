@@ -14,7 +14,7 @@ class Form {
         <label for="email-input"> E-mail:</label>
         <input id="email-input" placeholder='E-mail' type='text'/><br>
         <label for="order-total"> Order Total:</label>
-        <input id="order-total"  type='text'/><br>
+        <p> $${orderTotal()} </p><br>
         <input type="submit" value="Submit Order">`
         
         checkoutContainer.append(form)
@@ -36,7 +36,9 @@ class Form {
     handleSubmit(e) {
         e.preventDefault()
         const emailInput = e.target[0]
-        const orderTotal = e.target[1]
+
+        Order.createOrder(emailInput)
+        // alert(`Order successfully made - your order number is: ${}`)
     }
 
     handleCartItem(e){
@@ -64,11 +66,9 @@ class Form {
                 cart.push(productId)
                 localStorage.setItem("cart", JSON.stringify(cart))
                 alert(`Yay! Added ${productName} to cart.`)
-                // cartContainer.innerHTML += `<p> ${productId} </p>`
-                let pTag = document.createElement('p')
-                pTag.innerHTML = productId
-                pTag.id = productId
-                cartContainer.append(pTag)
+
+                let product = Product.all.find((element) => element.id == productId)
+                cartContainer.innerHTML += `<p id="${product.id}"> ${product.name} - $ ${product.price}0 <button class="btn btn-danger" data-action="delete-item-cart">Remove from Cart</button> </p>`
                 
                break;
 

@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
     form.listenAddToCart();
     form.listenCartItem();
-    form.checkoutForm();
     shoppingCart();
     checkout();
 })
@@ -48,10 +47,18 @@ function checkout(){
     const checkout = document.getElementById("checkout")
 
     checkout.addEventListener("click", () => {
+        form.checkoutForm();
         console.log("Checkout")
-        localStorage.setItem("cart", JSON.stringify([]))
-        cart = []
-        document.getElementById("cart-container").innerHTML = ""
     })
+}
+
+function orderTotal(){
+    const getCart = JSON.parse(localStorage.getItem("cart"))
+   
+    return getCart.reduce((acc, currentProductId) => { 
+        let product = Product.all.find((element) => element.id == currentProductId)
+        return acc + parseInt(product.price)
+    }, 0);
+
 }
 
