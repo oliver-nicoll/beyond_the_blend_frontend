@@ -5,8 +5,9 @@ let cartPage = "cart"
 
 document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
-    form.listenOrder();
+    form.listenAddToCart();
     form.listenCartItem();
+    form.checkoutForm();
     shoppingCart();
     checkout();
 })

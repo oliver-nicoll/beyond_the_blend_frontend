@@ -1,22 +1,46 @@
 class Form {
 
     constructor(){
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCartItem = this.handleCartItem.bind(this)
-        this.handleOrder = this.handleOrder.bind(this)
+        this.handleAddToCart = this.handleAddToCart.bind(this)
     }
 
+    checkoutForm(){
+        const checkoutContainer = document.getElementById('checkout-container-form')
+        const form = document.createElement('form')
+    
+        form.innerHTML = `
+        <label for="email-input"> E-mail:</label>
+        <input id="email-input" placeholder='E-mail' type='text'/><br>
+        <label for="order-total"> Order Total:</label>
+        <input id="order-total"  type='text'/><br>
+        <input type="submit" value="Submit Order">`
+        
+        checkoutContainer.append(form)
+        
+        form.addEventListener("submit", this.handleSubmit)
+    }
+    
+    
     listenCartItem(){
         const cartContainer = document.getElementById("cart-container")
         cartContainer.addEventListener("click", this.handleCartItem)
     }
-
-    listenOrder(){
+    
+    listenAddToCart(){
         const productContainer = document.getElementById("product-container");
-        productContainer.addEventListener("click", this.handleOrder)
+        productContainer.addEventListener("click", this.handleAddToCart)
+    }
+    
+    handleSubmit(e) {
+        e.preventDefault()
+        const emailInput = e.target[0]
+        const orderTotal = e.target[1]
     }
 
     handleCartItem(e){
-
+        
         let productId = e.target.parentElement.id
         let index = cart.indexOf(productId)
 
@@ -26,13 +50,13 @@ class Form {
 
     }
     
-    handleOrder(e){
-        const li = e.target.parentElement
+    handleAddToCart(e){
+        
         const action = e.target.dataset.action
         const productId = parseInt(e.target.parentElement.dataset.id)
         let productName = e.target.parentElement.children[0].innerText
         const cartContainer = document.getElementById("cart-container")
-       
+
         switch (action) {
             case "add-cart":
                 console.log("Adding Item to Cart", productId)
@@ -40,16 +64,19 @@ class Form {
                 cart.push(productId)
                 localStorage.setItem("cart", JSON.stringify(cart))
                 alert(`Yay! Added ${productName} to cart.`)
+                // cartContainer.innerHTML += `<p> ${productId} </p>`
                 let pTag = document.createElement('p')
                 pTag.innerHTML = productId
                 pTag.id = productId
                 cartContainer.append(pTag)
-                break;
+                
+               break;
 
             default:
                 break;
         }
     }
+
 
 
 }
