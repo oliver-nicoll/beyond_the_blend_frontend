@@ -15,12 +15,12 @@ class Product {
 
     render(){
         return(
-            `<li class="product-card" style="list-style: none;">
+            `<li class="product-card" data-id=${this.id} style="list-style: none;">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-100">
                             <img src="${this.image}" class="card-img-top" >
-                        <div data-id=${this.id} class="card-body">
+                        <div data-id=${this.id} id="card-body" class="card-body">
                             <h5 class="card-title">${this.name}</h5>
                             <p class="card-text">${this.description}</p>
                             <span>$ ${this.price}0</span>
