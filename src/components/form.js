@@ -6,6 +6,18 @@ class Form {
         this.handleAddToCart = this.handleAddToCart.bind(this)
     }
 
+    searchOrderForm(){
+        const orderForm = document.getElementById('search-orders')
+
+        orderForm.addEventListener("submit", this.handleOrderForm )
+    }
+
+    handleOrderForm = (e) => {
+        e.preventDefault()
+        debugger
+        console.log(e)
+    }
+
     checkoutForm(){
         const checkoutContainer = document.getElementById('checkout-container-form')
         const form = document.createElement('form')

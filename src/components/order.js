@@ -35,6 +35,7 @@ class Order {
             localStorage.setItem("cart", JSON.stringify([]))
             cart = []
             document.getElementById("cart-container").innerHTML = ""
+            document.getElementById("checkout-container-form").innerHTML = ""
         })
         .catch(err => console.error("I'm in the catch!", err))
     }
