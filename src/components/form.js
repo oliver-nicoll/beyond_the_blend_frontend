@@ -36,9 +36,9 @@ class Form {
     handleSubmit(e) {
         e.preventDefault()
         const emailInput = e.target[0]
-
-        Order.createOrder(emailInput)
-        // alert(`Order successfully made - your order number is: ${}`)
+        const cart_array = localStorage.getItem("cart")
+        Order.createOrder(emailInput, cart_array)
+        
     }
 
     handleCartItem(e){

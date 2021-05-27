@@ -57,7 +57,7 @@ function orderTotal(){
    
     return getCart.reduce((acc, currentProductId) => { 
         let product = Product.all.find((element) => element.id == currentProductId)
-        return acc + parseInt(product.price)
+        return acc + parseFloat(product.price)
     }, 0);
 
 }
