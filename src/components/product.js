@@ -38,10 +38,10 @@ class Product {
     }
 
 
-    currency(){
-        let amount = this.price
-        amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    }
+    // currency(){
+    //     let amount = this.price
+    //     amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    // }
 
 
 }

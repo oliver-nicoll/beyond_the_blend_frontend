@@ -8,6 +8,7 @@ class Order {
 
         Order.all.push(this)
     }
+
     static createOrder(emailInput){
         fetch("http://127.0.0.1:3000/api/v1/orders", {
             method: "POST",
@@ -16,13 +17,14 @@ class Order {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                email: emailInput.value,
-                cart_array: localStorage.getItem("cart"),
+                order: {
+                    email: emailInput.value,
+                    cart_array: JSON.parse(localStorage.getItem("cart"))
+                }
             }) 
         })
         .then(resp => resp.json())
         .then(data => {
-            // debugger
             if (data.status === 201){
                 const o = new Order(data.order)
                 alert(`Order successfully made - your order number is: ${o.id}`)
@@ -39,6 +41,21 @@ class Order {
         })
         .catch(err => console.error("I'm in the catch!", err))
     }
+
+    // getOrders(){
+    //     fetch("http://127.0.0.1:3000/api/v1/orders")
+    //     .then(resp => resp.json())
+    //     .then(orders => {
+    //         orders.forEach(order => {
+    //             // let order = new Order(order)
+    //             console.log(order)
+
+    //         })
+    //     })
+    //     .catch(error => console.error(error))
+    // }
+
+    
 
 
 }

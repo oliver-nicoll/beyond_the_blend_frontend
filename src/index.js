@@ -63,3 +63,15 @@ function orderTotal(){
 
 }
 
+function getOrderById(id){
+    fetch(`http://127.0.0.1:3000/api/v1/orders/${id}`)
+        .then(resp => resp.json())
+        .then(order => {
+            // order.forEach(order => {
+                // let order = new Order(order)
+                console.log(order)
+            // })
+        })
+        .catch(error => console.error(error))
+}
+

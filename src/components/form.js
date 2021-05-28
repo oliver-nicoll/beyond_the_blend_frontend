@@ -14,8 +14,10 @@ class Form {
 
     handleOrderForm = (e) => {
         e.preventDefault()
-        debugger
-        console.log(e)
+        const input = e.target[0].value
+        getOrderById(input);
+        // debugger
+        // console.log(e)
     }
 
     checkoutForm(){
