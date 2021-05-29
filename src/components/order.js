@@ -42,18 +42,7 @@ class Order {
         .catch(err => console.error("I'm in the catch!", err))
     }
 
-    // getOrders(){
-    //     fetch("http://127.0.0.1:3000/api/v1/orders")
-    //     .then(resp => resp.json())
-    //     .then(orders => {
-    //         orders.forEach(order => {
-    //             // let order = new Order(order)
-    //             console.log(order)
-
-    //         })
-    //     })
-    //     .catch(error => console.error(error))
-    // }
+    
 
     
 

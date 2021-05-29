@@ -16,8 +16,6 @@ class Form {
         e.preventDefault()
         const input = e.target[0].value
         getOrderById(input);
-        // debugger
-        // console.log(e)
     }
 
     checkoutForm(){
@@ -75,7 +73,6 @@ class Form {
 
         switch (action) {
             case "add-cart":
-                console.log("Adding Item to Cart", productId)
 
                 cart.push(productId)
                 localStorage.setItem("cart", JSON.stringify(cart))

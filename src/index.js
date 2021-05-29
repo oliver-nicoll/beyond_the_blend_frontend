@@ -63,15 +63,26 @@ function orderTotal(){
 
 }
 
+function iterateObj(obj) {
+    for(prop in obj) {
+        if(typeof(obj[prop]) == "object"){
+            iterateObj(obj[prop]);
+        } else {
+            if(prop == "name" || prop == "quantity") {
+                 alert(`${prop} : ${obj[prop]}`);
+            }
+        }
+    }
+}
+
 function getOrderById(id){
     fetch(`http://127.0.0.1:3000/api/v1/orders/${id}`)
         .then(resp => resp.json())
         .then(order => {
-            // order.forEach(order => {
-                // let order = new Order(order)
-                console.log(order)
-            // })
+            alert(`Order Number: ${order.id} `)
+            iterateObj(order)
         })
         .catch(error => console.error(error))
 }
+
 
