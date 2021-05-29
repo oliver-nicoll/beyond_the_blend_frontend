@@ -1,4 +1,4 @@
-/* body {
+body {
     background-image: url('images/Blend.png');
     background-position: center;
     height: 100vh;
@@ -7,8 +7,12 @@
     background-size: 100% 100%;
     font-family: "Lucida Console", "Courier New", monospace;
     color: black;
-} */
+}
 
+#checkout-container-form {
+    color: whitesmoke;
+    font-weight: bold;
+}
 
 .hidden {
     display: none;
@@ -27,4 +31,9 @@
     margin-bottom: 5%;
     position: relative;
     width: 30%;
+    color: white;
+    font-weight: bold;
+    line-height: 1.6;
+    background-color: black;
+    opacity: 90%;
 }
