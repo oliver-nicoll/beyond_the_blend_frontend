@@ -4,41 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="application.css">
     <title>Beyond the Blend Market</title>
 </head>
 
 <body>
+<!------------------------------------hero------------------------------------------------->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <form class="d-flex" id="search-orders">
             <input class="form-control me-2" type="search" placeholder="Search By Order #" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button id="modal-btn" class="btn btn-outline-success" type="submit">Search</button>
           </form>
           <a class="navbar-brand" >Beyond the Blend Market</a>
         </div>
       </nav>
+<!------------------------------------end of hero ------------------------------------------>
+<!----------------------------------------modal--------------------------------------------->
+    <div class="modal-overlay" id="modal-overlay">  
+      <div class="modal-container" id="modal-container">
+        <h5 id="modal-text"></h5>
+        <button class="close-btn" id="close-btn">
+          <i class="fas fa-times" ></i>
+        </button>
+      </div>
+    </div>
+<!---------------------------------------end of modal--------------------------------------->
     
-
+<!-----------------------------------------cart--------------------------------------------->
     <button id="cart-display" class="cart-display">&#128722;</button><br>
     <div id="cart-side-page" class="hidden">
         <div id="cart-container"></div>
         <button id="checkout"> Checkout </button>
     </div>
     <div class="checkout-form" id="checkout-container-form"></div>
-    
+<!-----------------------------------------end of cart-------------------------------------->
+
+<!-----------------------------------------products grid------------------------------------>
     <div id="products-grid" class="products-grid" > 
         <ul id="product-container" class="product-container"></ul>           
     </div>
+<!-----------------------------------------end of products grid----------------------------->
 
 
+<!-----------------------------------------scripts------------------------------------------>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="src/components/product.js"></script>
     <script type="text/javascript" src="src/components/productAdapter.js"></script>
     <script type="text/javascript" src="src/components/form.js"></script>
     <script type="text/javascript" src="src/components/order.js"></script>
+    <script type="text/javascript" src="src/components/modal.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
+<!----------------------------------------end of scripts------------------------------------>
+
 </body>
 </html>

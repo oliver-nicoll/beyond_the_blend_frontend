@@ -49,7 +49,6 @@ function checkout(){
 
     checkout.addEventListener("click", () => {
         form.checkoutForm();
-        console.log("Checkout")
     })
 }
 
@@ -64,12 +63,15 @@ function orderTotal(){
 }
 
 function iterateObj(obj) {
+ 
+    const modalText = document.getElementById('modal-text')
+
     for(prop in obj) {
         if(typeof(obj[prop]) == "object"){
             iterateObj(obj[prop]);
         } else {
-            if(prop == "name" || prop == "quantity") {
-                 alert(`${prop} : ${obj[prop]}`);
+            if(prop == "quantity" || prop == "name") {
+                 modalText.innerHTML += `${prop} : ${obj[prop]} <br>`;
             }
         }
     }
@@ -79,7 +81,6 @@ function getOrderById(id){
     fetch(`http://127.0.0.1:3000/api/v1/orders/${id}`)
         .then(resp => resp.json())
         .then(order => {
-            alert(`Order Number: ${order.id} `)
             iterateObj(order)
         })
         .catch(error => console.error(error))

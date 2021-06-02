@@ -6,16 +6,35 @@ class Form {
         this.handleAddToCart = this.handleAddToCart.bind(this)
     }
 
+    // modalContent() {
+    //     // const modalSearchBtn = document.getElementById('modal-btn')
+    //     // const modal = document.querySelector('.modal-overlay')
+    //     const closeBtn =document.querySelector(".close-btn")
+
+    //     closeBtn.addEventListener("click", this.handleClosedBtn)
+    // }
+
+    // handleClosedBtn(e){
+    //     const modal = document.querySelector('.modal-overlay')
+    //     console.log(e)
+    //     modal.classList.remove('open-modal')
+    //  }
+   
+
     searchOrderForm(){
         const orderForm = document.getElementById('search-orders')
 
         orderForm.addEventListener("submit", this.handleOrderForm )
     }
 
+
     handleOrderForm = (e) => {
-        e.preventDefault()
+        const modal = document.querySelector('.modal-overlay')
         const input = e.target[0].value
+
+        e.preventDefault()
         getOrderById(input);
+        modal.classList.add('open-modal')
     }
 
     checkoutForm(){
@@ -44,6 +63,7 @@ class Form {
         const productContainer = document.getElementById("product-container");
         productContainer.addEventListener("click", this.handleAddToCart)
     }
+
     
     handleSubmit(e) {
         e.preventDefault()
