@@ -5,25 +5,9 @@ class Form {
         this.handleCartItem = this.handleCartItem.bind(this)
         this.handleAddToCart = this.handleAddToCart.bind(this)
     }
-
-    // modalContent() {
-    //     // const modalSearchBtn = document.getElementById('modal-btn')
-    //     // const modal = document.querySelector('.modal-overlay')
-    //     const closeBtn =document.querySelector(".close-btn")
-
-    //     closeBtn.addEventListener("click", this.handleClosedBtn)
-    // }
-
-    // handleClosedBtn(e){
-    //     const modal = document.querySelector('.modal-overlay')
-    //     console.log(e)
-    //     modal.classList.remove('open-modal')
-    //  }
    
-
     searchOrderForm(){
         const orderForm = document.getElementById('search-orders')
-
         orderForm.addEventListener("submit", this.handleOrderForm )
     }
 

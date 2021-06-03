@@ -31,7 +31,6 @@ class Order {
                 
             } else {
                 alert(data.errors)
-                console.log(data.errors)
             }
             emailInput.value = ""
             localStorage.setItem("cart", JSON.stringify([]))
