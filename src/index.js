@@ -2,16 +2,15 @@ const productAdapter = new ProductAdapter("http://127.0.0.1:3000")
 const form = new Form
 let cart = JSON.parse(localStorage.getItem("cart")) || []
 let cartPage = "cart"
-// const product = new Product
 
 document.addEventListener("DOMContentLoaded", () => {
     productAdapter.getProducts();
-    form.sortBtn();
     form.searchOrderForm();
     form.listenAddToCart();
     form.listenCartItem();
     shoppingCart();
     checkout();
+    productAdapter.sortBtn();
 })
 
 

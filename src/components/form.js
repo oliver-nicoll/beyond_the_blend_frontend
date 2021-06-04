@@ -92,46 +92,46 @@ class Form {
         }
     }
 
-    //input a button on page => event listener
-    sortBtn() {
-        const sortBtn = document.getElementById("sortBtn")
-        const unsortBtn = document.getElementById("unsortBtn")
+    // //input a button on page => event listener
+    // sortBtn() {
+    //     const sortBtn = document.getElementById("sortBtn")
+    //     const unsortBtn = document.getElementById("unsortBtn")
 
-        sortBtn.addEventListener("click", this.handleSortBtn)
-        unsortBtn.addEventListener("click", this.handleUnsortBtn)
+    //     sortBtn.addEventListener("click", this.handleSortBtn)
+    //     unsortBtn.addEventListener("click", this.handleUnsortBtn)
         
-    }
-    //grabs all the products and sorts through products 
-    handleUnsortBtn = (e) => {
+    // }
+    // //grabs all the products and sorts through products 
+    // handleUnsortBtn = (e) => {
         
-        this.clearProducts()
+    //     this.clearProducts()
        
-        let productArr = Product.all.sort(function (a, b) {
-            return b.price - a.price
-          });
+    //     let productArr = Product.all.sort(function (a, b) {
+    //         return b.price - a.price
+    //       });
     
-       productArr.forEach(productArr => {
-           productArr.addToDom()
-       }) 
-    }
+    //    productArr.forEach(productArr => {
+    //        productArr.addToDom()
+    //    }) 
+    // }
 
-    handleSortBtn = (e) => {
+    // handleSortBtn = (e) => {
         
-        this.clearProducts()
+    //     this.clearProducts()
        
-        let productArr = Product.all.sort(function (a, b) {
-            return a.price - b.price 
-          });
+    //     let productArr = Product.all.sort(function (a, b) {
+    //         return a.price - b.price 
+    //       });
     
-       productArr.forEach(productArr => {
-           productArr.addToDom()
-       }) 
-    }
+    //    productArr.forEach(productArr => {
+    //        productArr.addToDom()
+    //    }) 
+    // }
 
-    clearProducts() {
-       const products = document.getElementById('product-container')
-       products.innerHTML = ""
-    }
+    // clearProducts() {
+    //    const products = document.getElementById('product-container')
+    //    products.innerHTML = ""
+    // }
 
 
 
