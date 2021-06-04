@@ -11,17 +11,20 @@
 </head>
 
 <body>
-<!------------------------------------hero------------------------------------------------->
+<!------------------------------------nav--------------------------------------------------->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <form class="d-flex" id="search-orders">
             <input class="form-control me-2" type="search" placeholder="Search By Order #" aria-label="Search">
             <button id="modal-btn" class="btn btn-outline-success" type="submit">Search</button>
           </form>
+          <button class="btn btn-outline-success" id="sortBtn"> Sort Products $ - $$$ </button>
+          <button class="btn btn-outline-success" id="unsortBtn"> Sort Products $$$ - $ </button>
+         
           <a class="navbar-brand" >Beyond the Blend Market</a>
         </div>
       </nav>
-<!------------------------------------end of hero ------------------------------------------>
+<!------------------------------------end of nav ------------------------------------------->
 <!----------------------------------------modal--------------------------------------------->
     <div class="modal-overlay" id="modal-overlay">  
       <div class="modal-container" id="modal-container">
@@ -44,7 +47,6 @@
 
 <!-----------------------------------------products grid------------------------------------>
     <div id="products-grid" class="products-grid" > 
-        <button id="sortBtn"> Sort Products </button>
         <ul id="product-container" class="product-container"></ul>           
     </div>
 <!-----------------------------------------end of products grid----------------------------->
