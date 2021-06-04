@@ -10,6 +10,7 @@ class Product {
         this.image = image
         this.category = category
 
+
         Product.all.push(this)
     }
 
@@ -37,11 +38,39 @@ class Product {
         productContainer.innerHTML += this.render()
     }
 
+    // //input a button on page => event listener
+    // sortBtn() {
+    //     const sortBtn = document.getElementById("sortBtn")
 
-    // currency(){
-    //     let amount = this.price
-    //     amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    //     sortBtn.addEventListener("click", this.handleSortBtn)
     // }
+    // //grabs all the products and sorts through products 
+
+    // handleSortBtn = (e) => {
+    //     let products = document.getElementById('product-container')
+        
+
+    //     this.renderSortProducts()
+       
+    //     let productArr = Product.all.sort(function (a, b) {
+    //         return a.price - b.price //a.price - b.price;
+    //       });
+    //    let o = Object.values(productArr)
+    //    o.forEach(productArr => {
+    //         let li = document.createElement('li');
+    //         li.innerHTML = JSON.stringify(productArr, null, 4);
+    //         products.append(li);
+    //    })
+        
+    // }
+
+    // renderSortProducts() {
+    //    const products = document.getElementById('product-container')
+
+    //    products.innerHTML = ""
+   
+    // }
+
 
 
 }
